@@ -53,6 +53,7 @@ type XAxisOption struct {
 	// The offset of label
 	LabelOffset Box
 	isValueAxis bool
+	Unit        int
 }
 
 const defaultXAxisHeight = 30
@@ -87,6 +88,7 @@ func (opt *XAxisOption) ToAxisOption() AxisOption {
 		SplitLineColor: opt.Theme.GetAxisSplitLineColor(),
 		TextRotation:   opt.TextRotation,
 		LabelOffset:    opt.LabelOffset,
+		Unit:           opt.Unit,
 	}
 	if opt.isValueAxis {
 		axisOpt.SplitLineShow = true
