@@ -32,7 +32,7 @@
 package main
 
 import (
-	charts "github.com/vicanso/go-charts/v2"
+	charts "github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -98,7 +98,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -173,7 +173,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -230,7 +230,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -285,7 +285,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -343,7 +343,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -383,7 +383,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
@@ -447,7 +447,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/neicong/go-charts/v2"
 )
 
 func main() {
