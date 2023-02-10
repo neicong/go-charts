@@ -26,6 +26,7 @@ import (
 	"bytes"
 	"errors"
 	"math"
+	"unicode"
 
 	"github.com/golang/freetype/truetype"
 	"github.com/wcharczuk/go-chart/v2"
@@ -695,7 +696,12 @@ func (p *Painter) MultiText(opt MultiTextOption) *Painter {
 			p.ClearTextRotation()
 			p.SetTextRotation(opt.TextRotation)
 		}
-		box := p.MeasureText(text)
+		var box Box
+		if len([]rune(text)) > 4 {
+			box = p.MeasureText("大无语事")
+		} else {
+			box = p.MeasureText(text)
+		}
 		start := values[index]
 		if positionCenter {
 			start = (values[index] + values[index+1]) >> 1
@@ -717,7 +723,32 @@ func (p *Painter) MultiText(opt MultiTextOption) *Painter {
 		}
 		x += offset.Left
 		y += offset.Top
-		p.Text(text, x, y)
+
+		var (
+			str []rune
+			con float64
+			le  int
+		)
+		if len([]rune(text)) > 4 {
+			for _, s := range []rune(text) {
+				if unicode.Is(unicode.Han, s) {
+					str = append(str, s)
+					con += 1
+				} else {
+					str = append(str, s)
+					con += 0.5
+				}
+				if con >= 4 {
+					p.Text(string(str), x, y+le*12)
+					str = nil
+					con = 0
+					le++
+				}
+			}
+		} else {
+			p.Text(text, x, y)
+		}
+
 	}
 	if isTextRotation {
 		p.ClearTextRotation()
