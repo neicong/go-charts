@@ -729,24 +729,26 @@ func (p *Painter) MultiText(opt MultiTextOption) *Painter {
 			con float64
 			le  int
 		)
-		if len([]rune(text)) > 4 {
-			for _, s := range []rune(text) {
-				if unicode.Is(unicode.Han, s) {
-					str = append(str, s)
-					con += 1
-				} else {
-					str = append(str, s)
-					con += 0.5
-				}
-				if con >= 4 {
-					p.Text(string(str), x, y+le*12)
-					str = nil
-					con = 0
-					le++
-				}
+		for _, s := range []rune(text) {
+			if unicode.Is(unicode.Han, s) {
+				str = append(str, s)
+				con += 1
+			} else {
+				str = append(str, s)
+				con += 0.5
 			}
-		} else {
-			p.Text(text, x, y)
+			if con >= 4 {
+				p.Text(string(str), x, y+le*12)
+				str = nil
+				con = 0
+				le++
+			}
+		}
+		if con < 4 {
+			p.Text(string(str), x, y+le*12)
+			str = nil
+			con = 0
+			le++
 		}
 
 	}
