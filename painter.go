@@ -723,7 +723,6 @@ func (p *Painter) MultiText(opt MultiTextOption) *Painter {
 		}
 		x += offset.Left
 		y += offset.Top
-
 		var (
 			str []rune
 			con float64
